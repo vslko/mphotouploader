@@ -1,0 +1,116 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link rel="stylesheet" type="text/css" href="./css/mphotouploader.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./mphotouploader.js"></script>
+<script type="text/javascript">
+
+$(document).ready( function(){
+
+    var photo = $('#my-photo').mPhotoUploader({
+        url         : './server/upload.php',
+		name		: 'pic',
+		photo		: './img/1.jpg',
+		onError		: function( error ) { alert(' Error: ' + error); }
+    });
+
+});
+
+</script>
+
+
+<style type="text/css">
+  body { background-color:#F5F5F5; font-size: 12px; font-family: Tahoma; color: #555; margin: 24px; }
+  .section { background: none repeat scroll 0 0 #FFFFFF; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); margin-bottom: 27px; padding: 20px; line-height: 18px; }
+  ul.section { padding-left: 32px; }
+  .section-title { font-size: 20px;line-height: 22px;margin-bottom: 10px;margin-top: 10px;font-weight: normal;}
+  .in-section-title {font-size: 18px;line-height: 20px;margin-bottom: 8px;font-weight: normal;}
+  pre {background-color: #FAFAFA;border: 1px solid #CCCCCC;color: #000000;font-size: 11px;padding: 4px;}
+  a {color: #006096;text-decoration:none;font-weight: bold; }
+  a:hover { text-decaration: underline; }
+  .definition { display: inline-block; font-family: monospace;font-size: 15px;color: #0070A6;}
+  .typization { margin-left: 30px; font-style: italic; }
+  .description {display:block;margin-bottom: 20px; margin-left: 10px;}
+</style>
+
+
+<head>
+<title>Mantella PhotoUploader</title>
+</head>
+<body>
+
+<div class="section-title">mPhotoUploader demo</div>
+<div class="section">
+	<div id="my-photo"></div>
+</div>
+
+<div class="section-title">Features</div>
+<ul class="section">
+    <li>Select image by one click</li>
+    <li>Image changing at once after upload</li>
+    <li>Display image by default</li>
+    <li>Change image without server request</li>
+    <li>Additional parameters in request to server image uploading</li>
+</ul>
+
+<div class="section-title">Getting started</div>
+<div class="section">
+	<div class="in-section-title">Insert in head</div>
+	<pre>&lt;!-- basic style --&gt;
+&lt;link rel="stylesheet" type="text/css" href="your_path/css/mphotouploader.css" /&gt;
+&lt;!-- required javascripts --&gt;
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="your_path/js/mphotouploader.js"&gt;&lt;/script&gt;</pre>
+	<div class="in-section-title">Insert in body</div>
+	<pre>&lt;div id="my-photo"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+var photo = $('#my-photo').mPhotoUploader({
+	url	: './server/upload.php',
+	name	: 'pic',
+	photo	: './img/1.jpg',
+	onError	: function( error ) { alert(' Error: ' + error); }
+});
+&lt;/script&gt;</pre>
+
+</div>
+
+<div class="section-title">Documentation</div>
+<div class="section">
+
+	<div class="in-section-title">Options</div>
+	<span class="definition">url</span><span class="typization">Type: string, Default: "./upload/"</span>
+	<span class="description">Path to server script for upload image.</span>
+	<span class="definition">name</span><span class="typization">Type: string, Default: "myfile"</span>
+	<span class="description">Name of image-variable in request.</span>
+	<span class="definition">photo</span><span class="typization">Type: string, Default: null</span>
+	<span class="description">Path to image on initialization.</span>
+	<span class="definition">params</span><span class="typization">Type: object, Default: {}</span>
+	<span class="description">Additional parameters in request.</span>
+	<span class="definition">locale</span><span class="typization">Type: object, Default: in english</span>
+	<span class="description">Translations. Contents such fields:<br>
+	exten_error	: 'File {filename} is not image',<br>
+	fatal_error	: 'Fatal error'
+	</span>
+
+	<div class="in-section-title">Methods</div>
+	<span class="definition">object.mPhotoUploader('setPhoto', string/null )</span><span class="typization">Arguments: path to image</span>
+	<span class="description">Set new image without server request, if path is null, then show default image</span>
+	<span class="definition">object.mPhotoUploader('setParams', object )</span><span class="typization">Arguments: object of parameters</span>
+	<span class="description">Set additional parameters</span>
+
+	<div class="in-section-title">Events</div>
+	<span class="definition">onSuccess( path )</span>
+	<span class="description">Triggered when image is uploaded. Contents path to uploaded image on server</span>
+	<span class="definition">onError()</span>
+	<span class="description">Triggered when image uploading is failed. Contents error message</span>
+
+</div>
+
+
+</body>
+</html>
+
